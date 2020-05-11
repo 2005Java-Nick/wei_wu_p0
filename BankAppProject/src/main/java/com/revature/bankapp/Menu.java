@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 public class Menu implements Serializable{
+	
+	private static final Logger LOGGER = LogManager.getLogger(Menu.class);
 	private Scanner in;
 	List<Account> accounts;
 	List<Transfer> transferLogs;
@@ -15,11 +19,12 @@ public class Menu implements Serializable{
 		accounts = new ArrayList<Account>();
 		transferLogs = new ArrayList<Transfer>();
 		loadData();
+		LOGGER.debug("-BankApp Started-");
 	}
 	
 	private void saveData() {
 		try {
-			Logger.save(accounts, transferLogs);
+			LoggerAccounts.save(accounts, transferLogs);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -27,7 +32,7 @@ public class Menu implements Serializable{
 	}
     private void loadData() {
 		try {
-			Logger log = Logger.load();
+			LoggerAccounts log = LoggerAccounts.load();
 			accounts = new ArrayList<Account>(log.accounts);
 			transferLogs = new ArrayList<Transfer>(log.transferLogs);
 		} catch (ClassNotFoundException e) {

@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.List;
 
-public class Logger implements Serializable{
+public class LoggerAccounts implements Serializable{
 
 	public List<Account> accounts;
 	public List<Transfer> transferLogs;
@@ -41,9 +41,9 @@ public class Logger implements Serializable{
 	}
 	
     @SuppressWarnings("unchecked")
-	public static Logger load() throws IOException, ClassNotFoundException {
+	public static LoggerAccounts load() throws IOException, ClassNotFoundException {
     	//wraps both list of objects into one object
-    	Logger log = new Logger();
+    	LoggerAccounts log = new LoggerAccounts();
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream("Accounts.ser"));
 		log.accounts = (List<Account>)in.readObject();
 		
