@@ -2,6 +2,7 @@ package com.revature.bankapp;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Transfer implements Serializable{
 
@@ -42,5 +43,22 @@ public class Transfer implements Serializable{
 		this.amount = amount;
 	}
 	
+	//Searches for the account of the person to send money to, once found, transfers the money and updates balance
+    //and creates a transfer log
+    //returns false if account was not found
+    public static boolean transferMoney(String toAccount, int amount, List<Account> accounts, int accountID, List<Transfer> transferLogs) {
+    	
+    	for(Account userAccounts : accounts) {
+			if(userAccounts.getName().equals(toAccount)) {
+				userAccounts.accounts.setBalance(userAccounts.accounts.getBalance() + amount);
+				accounts.get(accountID).accounts.setBalance(accounts.get(accountID).accounts.getBalance() - amount);
+				
+				Transfer trans = new Transfer(accounts.get(accountID).getName(), toAccount, amount);
+				transferLogs.add(trans);
+				return true;
+			}
+		}
+    	return false;
+    }
 	
 }

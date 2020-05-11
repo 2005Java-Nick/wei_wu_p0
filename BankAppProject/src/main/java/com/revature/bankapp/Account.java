@@ -10,6 +10,12 @@ public class Account implements Serializable{
 	
 	public Account() {
 		accounts = new Checking();
+		accounts.setBalance(0);
+	}
+	public Account(String name, String password) {
+		accounts = new Checking();
+		this.name = name;
+		this.password = password;
 	}
 	
 	public String getName() {

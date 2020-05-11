@@ -34,8 +34,7 @@ public class Menu implements Serializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//Do nothing
 		}
 	}
     
@@ -105,7 +104,8 @@ public class Menu implements Serializable{
 			 String Username = in.nextLine();
 			 System.out.println("Enter Amount: ");
 			 int amount = Integer.parseInt(in.nextLine());
-			 if(transferMoney(Username, amount)) {
+			 if(Transfer.transferMoney(Username, amount, accounts, accountID, transferLogs)) {
+				 saveData();
 				 System.out.println("Transfer successful...");
 			 }	
 			 else {
@@ -118,23 +118,7 @@ public class Menu implements Serializable{
  		}
     }
 	
-    //Searches for the account of the person to send money to, once found, transfers the money and updates balance
-    //and creates a transfer log
-    //returns false if account was not found
-    public boolean transferMoney(String toAccount, int amount) {
-    	for(Account userAccounts : accounts) {
-			if(userAccounts.getName().equals(toAccount)) {
-				userAccounts.accounts.setBalance(userAccounts.accounts.getBalance() + amount);
-				accounts.get(accountID).accounts.setBalance(accounts.get(accountID).accounts.getBalance() - amount);
-				
-				Transfer trans = new Transfer(accounts.get(accountID).getName(), toAccount, amount);
-				transferLogs.add(trans);
-				saveData();
-				return true;
-			}
-		}
-    	return false;
-    }
+    
     
     
 	
