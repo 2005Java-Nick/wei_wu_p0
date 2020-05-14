@@ -1,4 +1,6 @@
 package com.revature.bankapp;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -35,9 +37,28 @@ public class Menu implements Serializable{
 			LoggerAccounts log = LoggerAccounts.load();
 			accounts = new ArrayList<Account>(log.accounts);
 			transferLogs = new ArrayList<Transfer>(log.transferLogs);
-		} catch (ClassNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			try {
+				FileOutputStream oFile = new FileOutputStream("Accounts.ser", true);
+				oFile.close();
+
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				
+			}
+			FileOutputStream oFile2;
+			try {
+				oFile2 = new FileOutputStream("Transfers.ser", true);
+				oFile2.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} 
+		catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			
 		} catch (IOException e) {
 			//Do nothing
 		}
@@ -100,6 +121,7 @@ public class Menu implements Serializable{
     public void mainMenu() {
     	 boolean trigger = true;	 
  		while(trigger) {
+ 		 System.out.println("Current Balance: " + accounts.get(accountID).accounts.getBalance());
     	 System.out.println("Enter 1 to Transfer Money.");
     	 System.out.println("Enter any other number to return to last menu.");
 		 System.out.println("Input: ");

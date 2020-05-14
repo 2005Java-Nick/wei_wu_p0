@@ -1,6 +1,8 @@
 package com.revature.bankapp;
 
-public class Checking {
+import java.io.Serializable;
+
+public class Checking implements Serializable{
 	private double balance;
 
 	public double getBalance() {

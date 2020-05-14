@@ -35,20 +35,24 @@ public class LoggerAccounts implements Serializable{
 		out.writeObject(accounts);
 		out.close();
 		
-		out = new ObjectOutputStream(new FileOutputStream("Transfers.ser")); 
-		out.writeObject(transferLogs);
-		out.close();
+		ObjectOutputStream out2 = new ObjectOutputStream(new FileOutputStream("Transfers.ser")); 
+		out2.writeObject(transferLogs);
+		out2.close();
 	}
 	
     @SuppressWarnings("unchecked")
 	public static LoggerAccounts load() throws IOException, ClassNotFoundException {
     	//wraps both list of objects into one object
     	LoggerAccounts log = new LoggerAccounts();
+    	try {
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream("Accounts.ser"));
 		log.accounts = (List<Account>)in.readObject();
-		
-		in = new ObjectInputStream(new FileInputStream("Transfers.ser"));
-		log.transferLogs = (List<Transfer>)in.readObject();
+		in.close();
+    	}finally{
+    		ObjectInputStream in2 = new ObjectInputStream(new FileInputStream("Transfers.ser"));
+    		log.transferLogs = (List<Transfer>)in2.readObject();
+    		in2.close();
+    	}
 		
 		return log;
 	}
