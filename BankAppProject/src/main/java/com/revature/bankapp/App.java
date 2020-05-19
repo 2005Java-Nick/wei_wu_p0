@@ -7,5 +7,6 @@ public class App
     {
     	Menu start = new Menu();
     	start.greetings();
+    	
     }
 }

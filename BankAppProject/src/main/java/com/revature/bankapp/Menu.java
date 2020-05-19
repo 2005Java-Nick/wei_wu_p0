@@ -79,8 +79,8 @@ public class Menu implements Serializable{
 				String password = in.nextLine();
 			 
 			 
-			 
-			 if(Login.login(username,password, accounts) >= 0) {
+			 accountID = Login.login(username,password, accounts);
+			 if(accountID >= 0) {
 				 System.out.println("Login successful...");
 				 mainMenu();
 			 }else {
