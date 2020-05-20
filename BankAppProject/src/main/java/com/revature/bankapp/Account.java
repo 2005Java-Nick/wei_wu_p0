@@ -1,37 +1,31 @@
 package com.revature.bankapp;
 
-import java.io.Serializable;
+public class Account {
+	private double balance;
+	private int accountID;
+	private String type;
 
-public class Account implements Serializable{
-	
-	private String name;
-	private String password;
-	public Checking accounts;
-	
-	public Account() {
-		accounts = new Checking();
-		accounts.setBalance(0);
+	public int getAccountID() {
+		return accountID;
 	}
-	public Account(String name, String password) {
-		accounts = new Checking();
-		this.name = name;
-		this.password = password;
+
+	public void setAccountID(int accountID) {
+		this.accountID = accountID;
 	}
-	
-	public String getName() {
-		return name;
+
+	public String getType() {
+		return type;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setType(String type) {
+		this.type = type;
 	}
-	public String getPassword() {
-		return password;
+
+	public double getBalance() {
+		return balance;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+
+	public void setBalance(double balance) {
+		this.balance = balance;
 	}
-	
-		
-	
-	
 }

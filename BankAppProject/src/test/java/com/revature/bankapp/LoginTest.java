@@ -17,8 +17,8 @@ public class LoginTest
     {
     	String username = "test";
     	String password = "testPassword";
-    	List<Account> accounts = new ArrayList<Account>();
-    	Account acc = new Account(username,password);
+    	List<UserAccount> accounts = new ArrayList<UserAccount>();
+    	UserAccount acc = new UserAccount(username,password);
     	accounts.add(acc);
         assertTrue(Login.login(username, password, accounts) >= 0);
     }
@@ -30,8 +30,8 @@ public class LoginTest
     	String password = "testPassword";
     	String fakeName = "tesat";
     	String fakePassword = "teesdd";
-    	List<Account> accounts = new ArrayList<Account>();
-    	Account acc = new Account(username,password);
+    	List<UserAccount> accounts = new ArrayList<UserAccount>();
+    	UserAccount acc = new UserAccount(username,password);
     	accounts.add(acc);
         assertFalse(Login.login(fakeName, fakePassword, accounts) >= 0);
     }
@@ -39,12 +39,12 @@ public class LoginTest
     @Test
     public void testCreateAccount_AccountCreatedTrue()
     {
-    	List<Account> accounts = new ArrayList<Account>();
+    	List<UserAccount> accounts = new ArrayList<UserAccount>();
     	String username = "test";
     	String password = "testPassword";;
     	
     	
-	     Account newAccount = Login.createAccount(username, password, accounts);
+	     UserAccount newAccount = Login.createAccount(username, password, accounts);
 	    accounts.add(newAccount);		 
         assertTrue(newAccount.getName() == accounts.get(0).getName() && newAccount.getPassword() == accounts.get(0).getPassword());
     }
@@ -52,14 +52,14 @@ public class LoginTest
     @Test
     public void testCreateAccount_AccountAlreadyExistTrue()
     {
-    	List<Account> accounts = new ArrayList<Account>();
+    	List<UserAccount> accounts = new ArrayList<UserAccount>();
     	String username = "test";
     	String password = "testPassword";;
     	String n = "test";
     	String nPass = "bfdfbhrhrdz";
     	
-	    accounts.add(new Account(n, nPass));	
-	     Account newAccount = Login.createAccount(username, password, accounts);
+	    accounts.add(new UserAccount(n, nPass));	
+	     UserAccount newAccount = Login.createAccount(username, password, accounts);
 	    accounts.add(newAccount);		 
         assertTrue(newAccount == null);
     }

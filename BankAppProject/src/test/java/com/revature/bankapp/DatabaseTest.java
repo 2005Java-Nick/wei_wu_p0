@@ -10,7 +10,7 @@ public class DatabaseTest {
 	public void test() {
 		try {
 
-			Connection conn = DatabaseConnection.getConnection();
+			Connection conn = ConnectionFactory.getConnection();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

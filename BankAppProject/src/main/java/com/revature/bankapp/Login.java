@@ -5,10 +5,10 @@ import java.util.List;
 public class Login {
 	
 	//Returns the index of the account if found, returns -1 if not found
-	public static int login(String username, String password, List<Account> accounts) {
+	public static int login(String username, String password, List<UserAccount> accounts) {
 		
 		int count=0;
-		for(Account userAccounts : accounts) {
+		for(UserAccount userAccounts : accounts) {
 			
 			if(userAccounts.getName().equals(username) && userAccounts.getPassword().equals(password)) {
 								
@@ -20,15 +20,15 @@ public class Login {
 	}
 	
 
-	 public static Account createAccount(String username, String password, List<Account> accounts) {
+	 public static UserAccount createAccount(String username, String password, List<UserAccount> accounts) {
 
-			for(Account userAccounts : accounts) {
+			for(UserAccount userAccounts : accounts) {
 				if(userAccounts.getName().equals(username)) {					
 					return null;
 				}
 			}
 			
-			Account newAccount = new Account();
+			UserAccount newAccount = new UserAccount();
 			newAccount.setName(username);
 			newAccount.setPassword(password);
 			//start everyone with a balance of 200$

@@ -4,15 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DatabaseConnection {
+public class ConnectionFactory {
 
 	private static String username;
 	private static String password;
 	private static final String DB_NAME = "revature_weiwu_db";
 	private static String url;
-	private static DatabaseConnection cf;
+	private static ConnectionFactory cf;
 
-	private DatabaseConnection() {
+	private ConnectionFactory() {
 		url = System.getenv("POSTGRES_URL");
 		url = "jdbc:postgresql://" + url + ":5432/" + DB_NAME + "?";
 		username = System.getenv("POSTGRES_USERNAME");
@@ -41,7 +41,7 @@ public class DatabaseConnection {
 
 	public static Connection getConnection() {
 		if (cf == null) {
-			cf = new DatabaseConnection();
+			cf = new ConnectionFactory();
 		}
 
 		return cf.createConnection();
