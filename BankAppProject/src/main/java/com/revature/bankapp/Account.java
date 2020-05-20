@@ -1,7 +1,9 @@
 package com.revature.bankapp;
 
+import java.math.BigDecimal;
+
 public class Account {
-	private double balance;
+	private BigDecimal balance;
 	private int accountID;
 	private String type;
 
@@ -21,11 +23,11 @@ public class Account {
 		this.type = type;
 	}
 
-	public double getBalance() {
+	public BigDecimal getBalance() {
 		return balance;
 	}
 
-	public void setBalance(double balance) {
+	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
 }

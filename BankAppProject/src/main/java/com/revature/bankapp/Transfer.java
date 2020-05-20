@@ -56,16 +56,6 @@ public class Transfer {
 	public static boolean transferMoney(String toAccount, int amount, List<UserAccount> accounts, int accountID,
 			List<Transfer> transferLogs) {
 
-		for (UserAccount userAccounts : accounts) {
-			if (userAccounts.getName().equals(toAccount)) {
-				userAccounts.accounts.setBalance(userAccounts.accounts.getBalance() + amount);
-				accounts.get(accountID).accounts.setBalance(accounts.get(accountID).accounts.getBalance() - amount);
-
-				Transfer trans = new Transfer(accounts.get(accountID).getName(), toAccount, amount);
-				transferLogs.add(trans);
-				return true;
-			}
-		}
 		return false;
 	}
 

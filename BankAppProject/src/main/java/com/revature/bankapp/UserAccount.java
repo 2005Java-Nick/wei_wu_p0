@@ -7,8 +7,7 @@ public class UserAccount {
 	public Account accounts;
 
 	public UserAccount() {
-		accounts = new Account();
-		accounts.setBalance(0);
+
 	}
 
 	public UserAccount(String name, String password) {
