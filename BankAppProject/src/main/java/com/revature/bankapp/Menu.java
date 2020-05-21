@@ -16,12 +16,12 @@ public class Menu {
 
 	private static Logger log = Logger.getRootLogger();
 	private Scanner in;
-	// List<Transfer> transferLogs;
+
 	private int userAccountID; // ID of the user account if login is successful
 
 	public Menu() {
 		in = new Scanner(System.in);
-		// transferLogs = new ArrayList<Transfer>();
+
 	}
 
 	public void greetings() {
