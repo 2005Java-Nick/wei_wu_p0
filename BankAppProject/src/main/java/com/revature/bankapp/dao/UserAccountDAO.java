@@ -55,6 +55,25 @@ public class UserAccountDAO {
 		return false;
 	}
 
+	private static final String CHANGE_USER_PASSWORD = "UPDATE user_account SET user_password = ? WHERE id = ?";
+
+	public static void changeUserPassword(int userAccountID, String password) {
+		String encryptedPassword = Encryption.encryptString(password);
+
+		Connection conn = ConnectionFactory.getConnection();
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = conn.prepareStatement(CHANGE_USER_PASSWORD);
+			preparedStatement.setString(1, encryptedPassword);
+			preparedStatement.setInt(2, userAccountID);
+			preparedStatement.executeUpdate();
+
+		} catch (Exception e) {
+
+		}
+
+	}
+
 	private static final String GET_UserACCOUNT_ID = "SELECT id FROM user_account WHERE user_account.username = ?";
 
 	public static int getUserAccount(String username, String password) {
@@ -80,6 +99,27 @@ public class UserAccountDAO {
 			}
 		}
 		return accountID;
+	}
+
+	private static final String USER_EXIST = "SELECT * FROM user_account WHERE user_account.username = ?";
+
+	public static boolean checkUserExist(String username) {
+
+		Connection conn = ConnectionFactory.getConnection();
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = conn.prepareStatement(USER_EXIST);
+			preparedStatement.setString(1, username);
+			ResultSet result = preparedStatement.executeQuery();
+			if (result.next()) {
+				return true;
+			}
+
+		} catch (Exception e) {
+			return false;
+		}
+
+		return false;
 	}
 
 }

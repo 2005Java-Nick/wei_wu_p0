@@ -89,7 +89,7 @@ public class TransactionDAO {
 			while (result.next()) {
 				trans = new Transaction();
 				trans.setTransactionID(result.getInt("id"));
-				trans.setAccountID(result.getInt("account_id"));
+				trans.setAccountID(result.getInt("user_account_id"));
 				trans.setReceiverAccountID(result.getInt("receiver_account_id"));
 				trans.setDateTime(result.getString("transaction_date"));
 				trans.setType(result.getString("transaction_type"));

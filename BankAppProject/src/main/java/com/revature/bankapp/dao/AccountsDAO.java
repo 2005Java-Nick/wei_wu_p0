@@ -60,4 +60,48 @@ public class AccountsDAO {
 
 		return accountList;
 	}
+
+	private static final String ACCOUNT_EXIST = "SELECT * FROM accounts WHERE accounts.id = ?";
+
+	public static boolean accountExist(int accountID) {
+		Connection conn = ConnectionFactory.getConnection();
+		PreparedStatement preparedStatement;
+
+		try {
+			preparedStatement = conn.prepareStatement(ACCOUNT_EXIST);
+			preparedStatement.setInt(1, accountID);
+
+			ResultSet result = preparedStatement.executeQuery();
+
+			if (result.next()) {
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return false;
+	}
+
+	private static final String OWNS_ACCOUNT = "SELECT * FROM accounts WHERE accounts.id = ? AND accounts.user_id = ?";
+
+	public static boolean ownsAccount(int accountID, int userAcountID) {
+		Connection conn = ConnectionFactory.getConnection();
+		PreparedStatement preparedStatement;
+
+		try {
+			preparedStatement = conn.prepareStatement(OWNS_ACCOUNT);
+			preparedStatement.setInt(1, accountID);
+			preparedStatement.setInt(2, userAcountID);
+			ResultSet result = preparedStatement.executeQuery();
+
+			if (result.next()) {
+				return true;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return false;
+	}
 }
