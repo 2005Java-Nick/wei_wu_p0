@@ -1,7 +1,8 @@
 package com.revature.bankapp;
 
-import java.math.BigDecimal;
 import java.util.List;
+
+import com.revature.bankapp.struct.UserAccount;
 
 public class Login {
 
@@ -32,7 +33,7 @@ public class Login {
 		newAccount.setName(username);
 		newAccount.setPassword(password);
 		// start everyone with a balance of 200$
-		newAccount.accounts.setBalance(BigDecimal.valueOf(200));
+		// newAccount.accounts.setBalance(BigDecimal.valueOf(200));
 		return newAccount;
 
 	}

@@ -4,6 +4,8 @@ import java.sql.Connection;
 
 import org.junit.Test;
 
+import com.revature.bankapp.dao.ConnectionFactory;
+
 public class DatabaseTest {
 
 	@Test

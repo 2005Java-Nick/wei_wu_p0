@@ -1,4 +1,4 @@
-package com.revature.bankapp;
+package com.revature.bankapp.dao;
 
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -7,10 +7,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransactionDAO {
-	private static final String DEPOSIT = "UPDATE accounts SET balance";
+import com.revature.bankapp.struct.Account;
 
-	public static boolean deposit(int userID, BigDecimal amount) {
+public class AccountsDAO {
+	private static final String CREATE_ACCOUNT = "INSERT INTO accounts (account_type,balance,user_id) values (?,?,?)";
+
+	public static boolean createAccount(String type, BigDecimal balance, int userID) {
 		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement preparedStatement;
 
@@ -18,7 +20,7 @@ public class TransactionDAO {
 			preparedStatement = conn.prepareStatement(CREATE_ACCOUNT);
 			preparedStatement.setString(1, type);
 			preparedStatement.setBigDecimal(2, balance);
-			preparedStatement.setInt(3, id);
+			preparedStatement.setInt(3, userID);
 			preparedStatement.executeUpdate();
 
 		} catch (Exception e) {
@@ -31,7 +33,7 @@ public class TransactionDAO {
 
 	private static final String GET_ACCOUNT = "SELECT * FROM accounts WHERE accounts.user_id = ?";
 
-	public static List<Account> getAccount(int userID) {
+	public static List<Account> getAccounts(int userID) {
 		Connection conn = ConnectionFactory.getConnection();
 		PreparedStatement preparedStatement;
 

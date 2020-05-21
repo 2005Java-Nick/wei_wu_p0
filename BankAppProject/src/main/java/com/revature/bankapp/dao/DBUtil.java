@@ -1,4 +1,4 @@
-package com.revature.bankapp;
+package com.revature.bankapp.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

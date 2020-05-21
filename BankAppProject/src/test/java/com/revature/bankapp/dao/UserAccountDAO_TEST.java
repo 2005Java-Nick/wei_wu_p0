@@ -1,6 +1,5 @@
-package com.revature.bankapp;
+package com.revature.bankapp.dao;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -12,7 +11,7 @@ public class UserAccountDAO_TEST {
 
 		try {
 
-			assertTrue(UserAccountDAO.createUserAccount("testttttt", "testpasss111"));
+			assertTrue(UserAccountDAO.createUserAccount("testttttt2222", "testpasss2222"));
 
 		} catch (Exception e) {
 			System.out.println("ERROR");
@@ -24,9 +23,9 @@ public class UserAccountDAO_TEST {
 	public void test2() {
 
 		try {
-			UserAccount acc = UserAccountDAO.getUserAccount("testUser", "testPassword");
+			int userAccountID = UserAccountDAO.getUserAccount("testttttt2222", "testpasss2222");
 
-			assertNotNull(acc);
+			assertTrue(userAccountID >= 0);
 
 		} catch (Exception e) {
 			System.out.println("ERROR");

@@ -1,10 +1,11 @@
-package com.revature.bankapp;
+package com.revature.bankapp.struct;
 
 import java.math.BigDecimal;
 
 public class Account {
-	private BigDecimal balance;
+
 	private int accountID;
+	private BigDecimal balance;
 	private String type;
 
 	public int getAccountID() {

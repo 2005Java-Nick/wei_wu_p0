@@ -1,19 +1,19 @@
-package com.revature.bankapp;
+package com.revature.bankapp.struct;
 
 public class UserAccount {
 
 	private String name;
 	private String password;
-	public Account accounts;
+	private int userID;
 
 	public UserAccount() {
 
 	}
 
-	public UserAccount(String name, String password) {
-		accounts = new Account();
+	public UserAccount(String name, String password, int userID) {
 		this.name = name;
 		this.password = password;
+		this.userID = userID;
 	}
 
 	public String getName() {
@@ -30,6 +30,14 @@ public class UserAccount {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getUserID() {
+		return userID;
+	}
+
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
 
 }

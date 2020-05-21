@@ -1,4 +1,4 @@
-package com.revature.bankapp;
+package com.revature.bankapp.dao;
 
 import static org.junit.Assert.assertTrue;
 
@@ -6,6 +6,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.junit.Test;
+
+import com.revature.bankapp.struct.Account;
 
 public class AccountsDAO_TEST {
 
@@ -26,7 +28,7 @@ public class AccountsDAO_TEST {
 	public void test2() {
 
 		try {
-			List<Account> accountList = AccountsDAO.getAccount(1);
+			List<Account> accountList = AccountsDAO.getAccounts(1);
 			assertTrue(!accountList.isEmpty());
 			for (Account a : accountList) {
 				System.out.println(a.getAccountID() + " " + a.getType() + " " + a.getBalance());
