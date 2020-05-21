@@ -10,8 +10,8 @@ public class Encryption {
 
 		PooledStringDigester digester = new PooledStringDigester();
 		digester.setPoolSize(cores);
-		digester.setAlgorithm("SHA-1");
-		digester.setIterations(50000);
+		digester.setAlgorithm("SHA-256");
+		digester.setIterations(100000);
 
 		String digest = digester.digest(userPassword);
 		return digest;
@@ -23,8 +23,8 @@ public class Encryption {
 
 		PooledStringDigester digester = new PooledStringDigester();
 		digester.setPoolSize(cores);
-		digester.setAlgorithm("SHA-1");
-		digester.setIterations(50000);
+		digester.setAlgorithm("SHA-256");
+		digester.setIterations(100000);
 
 		if (digester.matches(userPassword, storedPassword)) {
 			return true;
